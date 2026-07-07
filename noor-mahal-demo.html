@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor Mahal Haveli — Tajganj, Agra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory: #F2ECE1;
+    --ivory-dim: #E8E0D0;
+    --maroon: #6E1E2B;
+    --maroon-deep: #4A1420;
+    --gold: #B8923F;
+    --gold-soft: #D9C089;
+    --ink: #211B17;
+    --jade: #46614F;
+    --rose: #D8A9A0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  ::selection{background:var(--gold);color:var(--ink);}
+
+  h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin-bottom:18px;
+    display:inline-block;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;width:100%;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 6vw;
+    z-index:50;
+    mix-blend-mode:difference;
+  }
+  .brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    letter-spacing:0.08em;
+    color:var(--ivory);
+  }
+  .nav-wa{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    text-decoration:none;
+    border:1px solid var(--ivory);
+    padding:9px 16px;
+    border-radius:100px;
+    transition:opacity .3s;
+  }
+  .nav-wa:hover{opacity:0.6;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background:radial-gradient(ellipse at 50% 30%, #2A2119 0%, var(--ink) 65%);
+  }
+  #jali-canvas{
+    position:absolute;inset:0;width:100%;height:100%;
+    z-index:1;
+  }
+  .hero-content{
+    position:relative;z-index:5;
+    padding:0 6vw;
+    max-width:900px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.4rem);
+    color:var(--ivory);
+    line-height:1.05;
+    font-weight:500;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-soft);
+    font-weight:400;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:16px;
+    color:var(--ivory-dim);
+    max-width:480px;
+    margin-left:auto;margin-right:auto;
+    font-weight:300;
+  }
+  .hero-cta{
+    margin-top:44px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:16px 30px;
+    border-radius:100px;
+    transition:transform .35s cubic-bezier(.2,.9,.3,1), background .3s;
+  }
+  .hero-cta:hover{transform:translateY(-3px);background:var(--gold-soft);}
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    z-index:5;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    opacity:0.7;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-cue::after{
+    content:'';
+    width:1px;height:40px;
+    background:linear-gradient(var(--gold-soft), transparent);
+    animation:scrollpulse 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollpulse{
+    0%{transform:scaleY(0.3);transform-origin:top;opacity:0.4;}
+    50%{transform:scaleY(1);opacity:1;}
+    100%{transform:scaleY(0.3);transform-origin:bottom;opacity:0.4;}
+  }
+
+  /* ---------- SECTION FRAME ---------- */
+  section{
+    position:relative;
+    padding:130px 6vw;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .divider{
+    display:flex;justify-content:center;
+    padding:0;
+    background:var(--ink);
+  }
+  .divider svg{opacity:0.55;}
+
+  .reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- ARRIVAL ---------- */
+  .arrival{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .arrival h2{
+    font-size:clamp(2rem,3.6vw,3rem);
+    color:var(--ivory);
+    margin-bottom:22px;
+  }
+  .arrival p{color:var(--ivory-dim);font-size:15.5px;max-width:440px;}
+  .arch-wrap{
+    display:flex;justify-content:center;
+    perspective:1200px;
+  }
+  .arch-wrap svg{
+    width:100%;max-width:340px;
+    transition:transform .6s ease;
+  }
+  .arch-wrap:hover svg{transform:rotateY(8deg) rotateX(-3deg);}
+
+  /* ---------- ROOMS ---------- */
+  .rooms-head{text-align:center;margin-bottom:70px;}
+  .rooms-head h2{font-size:clamp(2rem,3.6vw,3rem);}
+  .room-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .room-card{
+    background:linear-gradient(160deg, #2B231C, #1B1611);
+    border:1px solid rgba(184,146,63,0.25);
+    border-radius:6px;
+    padding:38px 28px 32px;
+    transform-style:preserve-3d;
+    transition:transform .5s cubic-bezier(.2,.8,.3,1), border-color .5s;
+    cursor:default;
+  }
+  .room-card:hover{
+    transform:rotateY(-6deg) rotateX(3deg) translateY(-6px);
+    border-color:rgba(184,146,63,0.7);
+  }
+  .room-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:var(--gold-soft);letter-spacing:0.2em;
+  }
+  .room-card h3{
+    font-size:1.7rem;color:var(--ivory);margin:14px 0 12px;
+  }
+  .room-card p{
+    color:var(--ivory-dim);font-size:14px;margin-bottom:22px;min-height:70px;
+  }
+  .room-price{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;color:var(--rose);letter-spacing:0.05em;
+  }
+
+  /* ---------- ROOFTOP / SIGNATURE ---------- */
+  .rooftop{
+    max-width:none;padding:0;
+    height:90vh;
+    position:relative;
+    display:flex;align-items:flex-end;
+    background:linear-gradient(180deg, #1A140F 0%, #241A13 55%, var(--maroon-deep) 100%);
+    overflow:hidden;
+  }
+  .rooftop-content{
+    position:relative;z-index:4;
+    padding:0 6vw 90px;
+    width:100%;
+    text-align:center;
+  }
+  .rooftop h2{
+    font-size:clamp(2.2rem,5vw,4rem);
+    color:var(--ivory);
+  }
+  .rooftop p{
+    color:var(--gold-soft);
+    max-width:480px;margin:18px auto 0;
+    font-size:15px;
+  }
+  .skyline{
+    position:absolute;bottom:0;left:0;width:100%;
+    z-index:2;opacity:0.9;
+  }
+  .stars{position:absolute;inset:0;z-index:1;}
+  .star{
+    position:absolute;width:2px;height:2px;background:var(--gold-soft);
+    border-radius:50%;opacity:0.6;
+    animation:twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{0%,100%{opacity:0.15;}50%{opacity:0.85;}}
+
+  /* ---------- BOOKING ---------- */
+  .booking{text-align:center;}
+  .booking h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:20px;}
+  .booking p{color:var(--ivory-dim);max-width:560px;margin:0 auto 40px;font-size:15.5px;}
+  .stat-row{
+    display:flex;justify-content:center;gap:60px;
+    margin-bottom:48px;flex-wrap:wrap;
+  }
+  .stat{text-align:center;}
+  .stat b{
+    display:block;font-family:'Cormorant Garamond',serif;
+    font-size:2.6rem;color:var(--gold-soft);font-weight:500;
+  }
+  .stat span{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;
+    letter-spacing:0.15em;text-transform:uppercase;color:var(--ivory-dim);
+  }
+  .wa-cta{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--gold);color:var(--ink);
+    padding:18px 36px;border-radius:100px;
+    text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    transition:transform .35s cubic-bezier(.2,.9,.3,1), background .3s;
+  }
+  .wa-cta:hover{transform:translateY(-3px) scale(1.02);background:var(--gold-soft);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:70px 6vw 50px;
+    max-width:1200px;margin:0 auto;
+    border-top:1px solid rgba(184,146,63,0.2);
+    display:flex;justify-content:space-between;align-items:flex-end;
+    flex-wrap:wrap;gap:24px;
+  }
+  footer .f-note{
+    max-width:520px;color:var(--ivory-dim);font-size:13.5px;
+  }
+  footer .f-note strong{color:var(--gold-soft);font-weight:500;}
+  footer .f-brand{
+    font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ivory-dim);
+  }
+
+  @media (max-width:860px){
+    .arrival{grid-template-columns:1fr;text-align:center;}
+    .arrival p{margin:0 auto;}
+    .room-grid{grid-template-columns:1fr;}
+    .stat-row{gap:36px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Noor Mahal Haveli</div>
+  <a class="nav-wa" href="https://wa.me/910000000000?text=Hi%2C%20I%27d%20like%20to%20check%20availability" target="_blank" rel="noopener">Book on WhatsApp</a>
+</nav>
+
+<section class="hero">
+  <canvas id="jali-canvas"></canvas>
+  <div class="hero-content">
+    <h1>Five minutes from the Taj.<br><em>A lifetime from ordinary.</em></h1>
+    <p class="hero-sub">A family-run haveli in the lanes of Tajganj — where your morning chai comes with a view the world lines up for at dawn.</p>
+    <a class="hero-cta" href="#booking">Reserve Your Stay</a>
+  </div>
+  <div class="scroll-cue">Enter the Haveli</div>
+</section>
+
+<div class="divider">
+  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="20" r="14" fill="none" stroke="#B8923F" stroke-width="1"/>
+    <circle cx="30" cy="20" r="14" fill="none" stroke="#B8923F" stroke-width="1"/>
+    <circle cx="90" cy="20" r="14" fill="none" stroke="#B8923F" stroke-width="1"/>
+  </svg>
+</div>
+
+<section class="arrival">
+  <div class="reveal">
+    <span class="eyebrow">The Arrival</span>
+    <h2>Through the East Gate lane, into our courtyard.</h2>
+    <p>Step off a short walk from the Taj Mahal's East Gate and you're in a different pace of Agra entirely. No lobby, no queue — just Faiz or one of the family waiting to carry your bags up, chai already brewing on the terrace. This is the haveli guests describe as "the place that made Agra feel like home."</p>
+  </div>
+  <div class="arch-wrap reveal">
+    <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 380 V150 Q20 30 150 30 Q280 30 280 150 V380" fill="none" stroke="#B8923F" stroke-width="2"/>
+      <path d="M45 380 V155 Q45 55 150 55 Q255 55 255 155 V380" fill="none" stroke="#D9C089" stroke-width="1" opacity="0.6"/>
+      <circle cx="150" cy="150" r="10" fill="none" stroke="#B8923F" stroke-width="1.5"/>
+      <path d="M70 380 V200 Q70 240 110 240 Q150 240 150 200 Q150 240 190 240 Q230 240 230 200 V380" fill="none" stroke="#6E1E2B" stroke-width="1.5" opacity="0.7"/>
+    </svg>
+  </div>
+</section>
+
+<div class="divider">
+  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="20" r="14" fill="none" stroke="#B8923F" stroke-width="1"/>
+    <circle cx="30" cy="20" r="14" fill="none" stroke="#B8923F" stroke-width="1"/>
+    <circle cx="90" cy="20" r="14" fill="none" stroke="#B8923F" stroke-width="1"/>
+  </svg>
+</div>
+
+<section>
+  <div class="rooms-head reveal">
+    <span class="eyebrow">Rooms & Suites</span>
+    <h2>Three ways to stay.</h2>
+  </div>
+  <div class="room-grid">
+    <div class="room-card reveal">
+      <span class="room-num">01 — Street Facing</span>
+      <h3>The Jharokha Room</h3>
+      <p>A traditional window suite catching the first light over the lane — guests say the sunrise here rivals the monument itself.</p>
+      <span class="room-price">From ₹1,800 / night</span>
+    </div>
+    <div class="room-card reveal">
+      <span class="room-num">02 — Terrace Level</span>
+      <h3>The Rooftop Suite</h3>
+      <p>A private terrace with an unobstructed dome view. Breakfast is served at your own table, not a communal one.</p>
+      <span class="room-price">From ₹3,200 / night</span>
+    </div>
+    <div class="room-card reveal">
+      <span class="room-num">03 — Courtyard</span>
+      <h3>The Courtyard Room</h3>
+      <p>Quiet, garden-facing, and closest to the kitchen — where home-cooked meals are part of the stay, not an add-on.</p>
+      <span class="room-price">From ₹1,400 / night</span>
+    </div>
+  </div>
+</section>
+
+<section class="rooftop">
+  <div class="stars" id="stars"></div>
+  <svg class="skyline" viewBox="0 0 1200 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 300 L0 220 L60 220 L60 180 L100 180 L100 220 L160 220 L160 140 Q160 90 210 90 Q260 90 260 140 L260 220 L320 220 L320 190 L360 190 L360 220 L440 220 L440 160 L470 160 L470 130 Q470 60 560 60 Q650 60 650 130 L650 160 L680 160 L680 220 L760 220 L760 195 L800 195 L800 220 L880 220 L880 150 L920 150 L920 100 Q920 70 960 70 Q1000 70 1000 100 L1000 150 L1040 150 L1040 220 L1200 220 L1200 300 Z" fill="#0F0B08" opacity="0.9"/>
+  </svg>
+  <div class="rooftop-content reveal">
+    <span class="eyebrow">The Rooftop</span>
+    <h2>Dinner with the dome on the horizon.</h2>
+    <p>Every haveli in Tajganj claims a "Taj view." Ours is the one where you'll still be sitting there an hour after the sun's gone down.</p>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="reveal">
+    <span class="eyebrow">Book Direct, Save More</span>
+    <h2>Skip the 20% the apps take.</h2>
+    <p>Every booking through an app costs us a quarter in commission — money that should go into your stay, not a platform's pocket. Message us directly and get a straight answer, a fair price, and a host who already knows your travel dates.</p>
+    <div class="stat-row">
+      <div class="stat"><b>0%</b><span>Booking Commission</span></div>
+      <div class="stat"><b>2 min</b><span>Avg. Reply Time</span></div>
+      <div class="stat"><b>4.8★</b><span>Guest Rating</span></div>
+    </div>
+    <a class="wa-cta" href="https://wa.me/910000000000?text=Hi%2C%20I%27d%20like%20to%20check%20availability" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2.05 22l5.36-1.4a9.9 9.9 0 0 0 4.63 1.18h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2m0 1.8c2.16 0 4.19.84 5.72 2.37a8.03 8.03 0 0 1 2.37 5.73c0 4.47-3.63 8.1-8.1 8.1a8.1 8.1 0 0 1-4.12-1.13l-.3-.17-3.18.83.85-3.1-.19-.32a8.06 8.06 0 0 1-1.24-4.3c0-4.47 3.64-8.01 8.19-8.01M8.5 6.9c-.17 0-.45.06-.68.32-.23.25-.9.87-.9 2.13s.92 2.47 1.05 2.64c.13.17 1.8 2.85 4.42 3.9 2.18.86 2.62.7 3.1.65.47-.04 1.53-.62 1.75-1.22.22-.6.22-1.1.15-1.22-.06-.12-.24-.19-.5-.32-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.66.84-.81 1.01-.15.17-.3.19-.56.06-.26-.13-1.09-.4-2.07-1.28-.77-.68-1.28-1.53-1.44-1.79-.15-.26-.02-.4.11-.53.12-.12.26-.3.4-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.42-.81-1.94-.21-.5-.43-.44-.58-.44Z"/></svg>
+      Message the Host
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-note">
+    <strong>This page is a concept demo</strong> — built to show what a real home on the web could feel like for your own hotel, with your name, your rooms, your photos and your story in place of ours.
+  </div>
+  <div class="f-brand">Concept design — replace with your studio's contact before sending</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // ---------- Reveal on scroll ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // ---------- Twinkling stars ----------
+  const starsWrap = document.getElementById('stars');
+  for(let i=0;i<60;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*70+'%';
+    s.style.animationDelay = (Math.random()*4)+'s';
+    starsWrap.appendChild(s);
+  }
+
+  // ---------- 3D Jali + drifting gold dust (Three.js) ----------
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.getElementById('jali-canvas');
+  const isMobile = window.innerWidth < 700;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.z = 6;
+
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.3 : 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  // Build a jali lattice pattern on a canvas texture
+  function buildJaliTexture(){
+    const c = document.createElement('canvas');
+    c.width = 512; c.height = 512;
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0,0,512,512);
+    ctx.strokeStyle = 'rgba(184,146,63,0.9)';
+    ctx.lineWidth = 2;
+    const r = 42;
+    for(let y=-r; y<512+r; y+=r*1.5){
+      let row = Math.round(y/(r*1.5));
+      for(let x=-r; x<512+r; x+=r*1.5){
+        const offset = (row % 2 === 0) ? 0 : r*0.75;
+        ctx.beginPath();
+        ctx.arc(x+offset, y, r*0.62, 0, Math.PI*2);
+        ctx.stroke();
+      }
+    }
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(3,4);
+    return tex;
+  }
+
+  const jaliTex = buildJaliTexture();
+  const jaliGeo = new THREE.PlaneGeometry(16, 20, 1, 1);
+  const jaliMat = new THREE.MeshBasicMaterial({map:jaliTex, transparent:true, opacity:0.55, side:THREE.DoubleSide});
+  const jaliMesh = new THREE.Mesh(jaliGeo, jaliMat);
+  jaliMesh.position.z = -2.2;
+  scene.add(jaliMesh);
+
+  // Soft round sprite for particles
+  function buildDotTexture(){
+    const c = document.createElement('canvas');
+    c.width = 64; c.height = 64;
+    const ctx = c.getContext('2d');
+    const g = ctx.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(217,192,137,1)');
+    g.addColorStop(1,'rgba(217,192,137,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,64,64);
+    return new THREE.CanvasTexture(c);
+  }
+
+  const dotTex = buildDotTexture();
+  const PCOUNT = isMobile ? 90 : 220;
+  const positions = new Float32Array(PCOUNT*3);
+  const speeds = new Float32Array(PCOUNT);
+  for(let i=0;i<PCOUNT;i++){
+    positions[i*3] = (Math.random()-0.5)*14;
+    positions[i*3+1] = (Math.random()-0.5)*12;
+    positions[i*3+2] = (Math.random()-0.5)*6 - 1;
+    speeds[i] = 0.15 + Math.random()*0.35;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  const pMat = new THREE.PointsMaterial({
+    size:0.14, map:dotTex, transparent:true, opacity:0.85,
+    blending:THREE.AdditiveBlending, depthWrite:false
+  });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  let mouseX=0, mouseY=0;
+  window.addEventListener('mousemove',(e)=>{
+    mouseX = (e.clientX/window.innerWidth - 0.5);
+    mouseY = (e.clientY/window.innerHeight - 0.5);
+  });
+
+  function animate(){
+    if(!reducedMotion){
+      jaliMesh.rotation.y += 0.0009;
+      jaliMesh.rotation.x = mouseY*0.08;
+      jaliMesh.rotation.y += mouseX*0.0002;
+
+      const pos = pGeo.attributes.position.array;
+      for(let i=0;i<PCOUNT;i++){
+        pos[i*3+1] += speeds[i]*0.01;
+        if(pos[i*3+1] > 6){ pos[i*3+1] = -6; }
+      }
+      pGeo.attributes.position.needsUpdate = true;
+
+      camera.position.x += (mouseX*0.6 - camera.position.x)*0.02;
+      camera.position.y += (-mouseY*0.4 - camera.position.y)*0.02;
+      camera.lookAt(0,0,0);
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
+</body>
+</html>
